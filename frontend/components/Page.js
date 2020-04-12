@@ -1,6 +1,6 @@
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-// import Header from './Header';
-// import Meta from './Meta';
+import Header from './Header';
+import Meta from './Meta';
 
 const theme = {
   blue: '#2C16E2',
@@ -56,8 +56,8 @@ function Page(props) {
   return (
     <ThemeProvider theme={theme}>
       <StyledPage>
-        {/* <Meta /> */}
-        {/* <Header /> */}
+        <Meta />
+        <Header />
         <Inner>{props.children}</Inner>
       </StyledPage>
     </ThemeProvider>
