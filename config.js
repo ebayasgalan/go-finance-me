@@ -1,10 +1,9 @@
-import { withData } from 'next-apollo';
-import { HttpLink } from 'apollo-link-http';
+import { withApollo } from 'next-apollo';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 
-const config = {
-  link: new HttpLink({
-    uri: 'http://go-finance-me.herokuapp.com/v1/graphql', // <- Configure GraphQL Server URL
-  }),
-};
+const config = new ApolloClient({
+  uri: 'http://go-finance-me.herokuapp.com/v1/graphql',
+  cache: new InMemoryCache(),
+});
 
-export default withData(config);
+export default withApollo(config);

@@ -4,10 +4,10 @@ import withData from '../config';
 
 const userQuery = gql`
   query {
-    user(limit: 5) {
+    user {
       id
       name
-      age
+      email
     }
   }
 `;
@@ -25,7 +25,7 @@ const Index = () => {
         return (
           <div>
             {data.user.map((user) => (
-              <p>{user.name}</p>
+              <h1 key={user.id}>{user.name}</h1>
             ))}
           </div>
         );
@@ -34,4 +34,4 @@ const Index = () => {
   );
 };
 
-export default withData(Index);
+export default withData({ ssr: true })(Index);
