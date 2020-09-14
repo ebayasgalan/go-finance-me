@@ -1,27 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 const app = express();
 
-const port = process.env.PORT || 4000;
-
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('This is from express');
+app.get('/', (req, res) =>
+  res.status(200).send('express server is working at home page')
+);
+
+app.post('/signup', async (req, res) => {
+  // get request input
+  // const { name, email, password } = req.body.input;
+
+  // run some business logic
+
+  // success
+  // return res.json({
+  //   id: 4,
+  //   name: name,
+  // });
+  res.send('From signup route, method: Post');
 });
 
-app.post('/:route', (req, res) => {
-  try {
-    const handler = require(`./handlers/${req.params.route}`);
-    return handler(req, res);
-  } catch (e) {
-    console.log(e);
-    return res.status(404).json({
-      message: 'not found',
-    });
-  }
-});
-
-app.listen(port, () => console.log('app is listening on port: ' + port));
+app.listen(4000, () => console.log(`🚀 Server ready at http://localhost:4000`));

@@ -1,15 +1,16 @@
 const fetch = require('node-fetch');
 
 const HASURA_OPERATION = `
-mutation($name: String!, $email: String!, $password: String!) {
-  insert_user_one(object: {email: $email, name: $name, password: $password}) {
+mutation($email: String!, $age: Int!, $name: String!) {
+  insert_user_one(object: {age: $age, name: $name, email: $email}) {
     id
+    name
   }
 }
 `;
 
 // execute the parent operation in Hasura
-const execute = async (variables, reqHeaders) => {
+const execute = async (variables) => {
   const fetchResponse = await fetch(
     'http://go-finance-me.herokuapp.com/v1/graphql',
     {

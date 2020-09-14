@@ -1,11 +1,12 @@
+import { AppProps } from 'next/app';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://go-finance-me.herokuapp.com/v1/graphql',
+  uri: 'http://localhost:8080/v1/graphql',
   cache: new InMemoryCache(),
 });
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <Component {...pageProps} />
